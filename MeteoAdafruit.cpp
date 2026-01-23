@@ -140,7 +140,7 @@ void alert_thread(){
         temp_copy = temperature;
         data_mutex.unlock();
 
-        if(temp_copy > 26.0){
+        if(temp_copy > 35.0){
              stdio_mutex.lock();
              printf("Alerte: Temperature excessive!\n"); 
              stdio_mutex.unlock();
@@ -169,7 +169,7 @@ void mqtt_thread()
         publish(FEED_TEMP, t);
         publish(FEED_HUM, h);
         publish(FEED_PRESS, p);
-        if (temperature > 26.0) {
+        if (temperature > 35.0) {
             publish(FEED_ALERT_TEMP, 1.0);
         } else {
             publish(FEED_ALERT_TEMP, 0.0);
